@@ -4,10 +4,11 @@ public class Caminhao : Veiculos
 {
     public double CapacidadeCarga { get; set; }
 
-    public override void exibirdetalhes()
+    public override string exibirdetalhes()
     {
-        base.exibirdetalhes();
-        Console.WriteLine($"Capacidade de Carga: {CapacidadeCarga} toneladas");
+      string mensagenretorno=  base.exibirdetalhes();
+        mensagenretorno=$"Capacidade de Carga: {CapacidadeCarga} toneladas";
+    return mensagenretorno;
     }
 
    

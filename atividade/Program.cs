@@ -7,7 +7,7 @@ Caminhao caminhao1 = new Caminhao { modelo = "Volvo", Ano = 1927, CapacidadeDeTa
 List<IVeiculo> veiculos = new List<IVeiculo> { car,car1, caminhao1 };
 foreach (IVeiculo veiculo in veiculos)
 {
-    veiculo.exibirdetalhes(); 
+    Console.WriteLine(veiculo.exibirdetalhes()); 
     double distancia = 100;  
     double consumo = veiculo.CalcularConsumo(distancia);  
     Console.WriteLine($"Consumo para {distancia} km: {consumo} litros\n"); 

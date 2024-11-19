@@ -5,10 +5,11 @@ public class Carro : Veiculos
     public string Tipo { get; set; }  
 
    
-    public override void exibirdetalhes()
+    public override string exibirdetalhes()
     {
-        base.exibirdetalhes();
-        Console.WriteLine($"Tipo: {Tipo}");
+      string mensagenretorno=  base.exibirdetalhes();
+        mensagenretorno=$"Tipo: {Tipo}";
+        return mensagenretorno;
     }
     public override double CalcularConsumo(double distancia)
     {

@@ -12,10 +12,11 @@ namespace atividade5pontos.entidades
         public int Ano { get; set; }
         public double CapacidadeDeTanque { get; set; }
         public double ConsumaPorKM { get; set; }
-        public virtual void exibirdetalhes()
+        public virtual string exibirdetalhes()
         {
-            Console.WriteLine($"o modelo e:{modelo}  Ano  {Ano}  " +
-           $"capacidade de tanque={CapacidadeDeTanque} ei consumo que o veiculo faz por KM  e de:{ConsumaPorKM}");
+            string mensagenexibirdetakhe=$"o modelo e:{modelo}  Ano  {Ano}  " +
+           $"capacidade de tanque={CapacidadeDeTanque} ei consumo que o veiculo faz por KM  e de:{ConsumaPorKM}";
+            return mensagenexibirdetakhe;
         }
         public virtual double CalcularConsumo(double distancia)
         {
