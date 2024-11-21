@@ -15,40 +15,37 @@ namespace Core.Repositorio.Data
                 connection.Open();
 
                 string commandoSQL = @"
-                    CREATE TABLE IF NOT EXISTS Veiculoss (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        modelo TEXT NOT NULL,
-                        Ano INT NOT NULL,
-                        CapacidadeDeTanque DOUBLE NOT NULL,
-                        ConsumaPorKM DOUBLE NOT NULL
-                    );";
+            CREATE TABLE IF NOT EXISTS Veiculoss (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                modelo TEXT NOT NULL,
+                Ano INT NOT NULL,
+                CapacidadeDeTanque DOUBLE NOT NULL,
+                ConsumaPorKM DOUBLE NOT NULL
+            );";
 
                 connection.Execute(commandoSQL);
 
                 commandoSQL = @"
-                    CREATE TABLE IF NOT EXISTS Carrinhos (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Tipo TEXT NOT NULL,
-                        modelo TEXT NOT NULL,
-                        Ano INT NOT NULL,
-                        CapacidadeDeTanque DOUBLE NOT NULL,
-                        ConsumaPorKM DOUBLE NOT NULL
-                    );";
+            CREATE TABLE IF NOT EXISTS Carros (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                VeiculoId INTEGER NOT NULL,  -- Relacionamento com a tabela Veiculos
+                Tipo TEXT NOT NULL,
+                FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id)
+            );";
 
                 connection.Execute(commandoSQL);
 
                 commandoSQL = @"
-                    CREATE TABLE IF NOT EXISTS Caminhaos (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        CapacidadeCarga DOUBLE NOT NULL,
-                        modelo TEXT NOT NULL,
-                        Ano INT NOT NULL,
-                        CapacidadeDeTanque DOUBLE NOT NULL,
-                        ConsumaPorKM DOUBLE NOT NULL
-                    );";
+            CREATE TABLE IF NOT EXISTS Caminhaos (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                VeiculoId INTEGER NOT NULL,  -- Relacionamento com a tabela Veiculos
+                CapacidadeCarga DOUBLE NOT NULL,
+                FOREIGN KEY (VeiculoId) REFERENCES Veiculos(Id)
+            );";
 
                 connection.Execute(commandoSQL);
             }
         }
+
     }
 }

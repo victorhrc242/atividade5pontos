@@ -1,4 +1,8 @@
-using Core.Data;
+using Core.Repositorio;
+using Core.Repositorio.Data;
+using Core.Repositorio.Interfaces;
+using Core.service;
+using Core.service.interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +13,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 InicializadorBD.Inicializar();
+builder.Services.AddScoped<Icarroservice, carrinhoservice>();
+builder.Services.AddScoped<ICarroRepositor, Carrinhorepositor>();
+builder.Services.AddScoped<IVeiculoRepositor, VeiculoRepositor>();
+builder.Services.AddScoped<Icaminhãorepositor, caminhãoRepositor>();
+builder.Services.AddScoped<Icaminhãoservice, Caminãoservice>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

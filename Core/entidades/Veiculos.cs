@@ -8,6 +8,7 @@ namespace atividade5pontos.entidades
 {
     public class Veiculos:IVeiculo
     {
+        public int Id { get; set; }
         public string modelo { get; set; }
         public int Ano { get; set; }
         public double CapacidadeDeTanque { get; set; }

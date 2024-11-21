@@ -1,23 +1,22 @@
-﻿using atividade5pontos.entidades;
-using Core.DTO;
+﻿using Core.Repositorio.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Repositorio.Interfaces
+namespace Core.service.interfaces
 {
-    public interface ICarroRepositor
+    public interface Icarroservice
     {
-        public long Adicionar(CreateCarroDTO carro);
+        public void Adicionar(Carro carro);
 
         public void Remover(int id);
 
         public List<Carro> Listar();
 
+
         public Carro BuscarPorId(int id);
-     
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Core.Repositorio.Interfaces;
+﻿using Core.DTO;
+using Core.Repositorio.Interfaces;
 using Dapper.Contrib.Extensions;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -17,10 +18,10 @@ namespace Core.Repositorio
         {
             ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }
-        public void Adicionar(Carro carro)
+        public long Adicionar(CreateCarroDTO carro)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Carro>(carro);
+            return connection.Insert<CreateCarroDTO>(carro);
         }
         public void Remover(int id)
         {
