@@ -1,5 +1,6 @@
 ﻿using atividade5pontos.entidades;
 using Core.DTO;
+using Core.Repositorio;
 using Core.Repositorio.Interfaces;
 using Core.service.interfaces;
 using Microsoft.Extensions.Configuration;
@@ -49,6 +50,39 @@ namespace Core.service
         public List<Carro> Listar()
         {
            return _carroRepositor.Listar();
+        }
+        Carro carro = new Carro();
+        public List<Carro> BuscarPorVeiculoId(int id)
+        {
+            // Buscar o veículo pelo ID diretamente
+            var veiculo = _veiculoRepositor.BuscarPorId(id); // Método para buscar veículo pelo ID
+
+            // Se o veículo não for encontrado, retornar uma lista vazia
+            if (veiculo == null)
+                return new List<Carro>();
+
+            // Buscar o caminhão correspondente ao veículo
+            var caminhão = _carroRepositor.BuscarPorVeiculoId(id); // Método para buscar caminhão pelo ID do veículo
+
+            // Se o caminhão não for encontrado, retornar uma lista vazia
+            if (caminhão == null)
+                return new List<Carro>();
+
+            // Criar a lista de caminhões e adicionar o caminhão encontrado
+            return new List<Carro>
+    {
+        new Carro
+        {
+           
+            Id = veiculo.Id,
+            modelo = veiculo.modelo,
+            Ano = veiculo.Ano,
+            CapacidadeDeTanque = veiculo.CapacidadeDeTanque,
+            ConsumaPorKM = veiculo.ConsumaPorKM,
+            Tipo=carro.Tipo,
+            
+        }
+    };
         }
         public Carro BuscarPorId(int id)
         {

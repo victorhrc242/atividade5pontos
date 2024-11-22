@@ -13,17 +13,13 @@ namespace api.Controllers
             string _config = config.GetConnectionString("DefaultConnection");
             _icarroservice = icarroservice;
         }
-        [HttpPost("adicionarcarro")]
+        [HttpPost("adicionarcaminhão")]
         public void adicionar(Caminhao caminhao)
         {
             _icarroservice.Adicionar(caminhao);
         }
-        [HttpGet("listar-carro")]
-        public List<Caminhao> listarcarrinhos()
-        {
-            return _icarroservice.Listar();
-        }
-        [HttpGet("listar-carroporid")]
+        
+        [HttpGet("listar-CaminãoPorId")]
         public List<Caminhao> listarcarroporid(int id)
         {
             return _icarroservice.BuscarPorVeiculoId(id);

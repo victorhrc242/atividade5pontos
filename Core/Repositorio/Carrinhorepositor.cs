@@ -1,5 +1,6 @@
 ﻿using Core.DTO;
 using Core.Repositorio.Interfaces;
+using Dapper;
 using Dapper.Contrib.Extensions;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -28,6 +29,14 @@ namespace Core.Repositorio
             using var connection = new SQLiteConnection(ConnectionString);
             Carro carro = BuscarPorId(id);
             connection.Delete<Carro>(carro);
+        }
+        public Carro BuscarPorVeiculoId(int veiculoId)
+        {
+
+            using var connection = new SQLiteConnection(ConnectionString);
+            string query = "SELECT * FROM Carros WHERE VeiculoId = @VeiculoId";
+            return connection.QueryFirstOrDefault<Carro>(query, new { VeiculoId = veiculoId });
+
         }
         public List<Carro> Listar()
         {

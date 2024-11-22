@@ -1,5 +1,6 @@
 ﻿using atividade5pontos.entidades;
 using Core.DTO;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -18,6 +19,8 @@ namespace Core.Repositorio.Interfaces
         public List<Carro> Listar();
 
         public Carro BuscarPorId(int id);
-     
+        public  Carro BuscarPorVeiculoId(int veiculoId);
+       
+
     }
 }

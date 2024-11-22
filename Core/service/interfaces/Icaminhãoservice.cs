@@ -11,9 +11,8 @@ namespace Core.service.interfaces
     {
         public void Adicionar(Caminhao caminhao);
         public void Remover(int id);
-        public List<Caminhao> Listar();
         public Caminhao BuscarPorId(int id);
-        public Caminhao BuscarPorVeiculoId(int veiculoId);
+        public List<Caminhao> BuscarPorVeiculoId(int veiculoId);
        
     }
 }

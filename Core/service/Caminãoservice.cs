@@ -45,41 +45,38 @@ namespace Core.service
         {
             _icaminhãorepositor.Remover(id);
         }
-        public List<Caminhao> Listar()
+
+        public List<Caminhao> BuscarPorVeiculoId(int id)
+{
+    // Buscar o veículo pelo ID diretamente
+    var veiculo = _veiculorepositor.BuscarPorId(id); // Método para buscar veículo pelo ID
+
+    // Se o veículo não for encontrado, retornar uma lista vazia
+    if (veiculo == null)
+        return new List<Caminhao>();
+
+    // Buscar o caminhão correspondente ao veículo
+    var caminhão = _icaminhãorepositor.BuscarPorVeiculoId(id); // Método para buscar caminhão pelo ID do veículo
+
+    // Se o caminhão não for encontrado, retornar uma lista vazia
+    if (caminhão == null)
+        return new List<Caminhao>();
+
+    // Criar a lista de caminhões e adicionar o caminhão encontrado
+    return new List<Caminhao>
+    {
+        new Caminhao
         {
-            // Obtendo todos os veículos
-            var veiculos = _veiculorepositor.Listar(); // Supondo que você tenha um método Listar no repositório de Veículos
-
-            // Criando uma lista para armazenar os caminhões
-            List<Caminhao> caminhões = new List<Caminhao>();
-
-            // Para cada veículo, vamos verificar se ele está na tabela de Caminhaos
-            foreach (var veiculo in veiculos)
-            {
-                // Buscar o caminhão correspondente ao veículo
-                var caminhão = _icaminhãorepositor.BuscarPorVeiculoId(veiculo.Id);
-
-                if (caminhão != null)
-                {
-                    // Criar um objeto Caminhao e preencher as propriedades
-                    Caminhao caminhao = new Caminhao()
-                    {
-                        Id = caminhão.Id,
-                        modelo = veiculo.modelo,
-                        Ano = veiculo.Ano,
-                        CapacidadeDeTanque = veiculo.CapacidadeDeTanque,
-                        ConsumaPorKM = veiculo.ConsumaPorKM,
-                        CapacidadeCarga = caminhão.CapacidadeCarga
-                    };
-
-                    // Adicionar o caminhão à lista
-                    caminhões.Add(caminhao);
-                }
-            }
-
-            // Retornar a lista de caminhões
-            return caminhões;
+            Id = caminhão.Id,
+            modelo = veiculo.modelo,
+            Ano = veiculo.Ano,
+            CapacidadeDeTanque = veiculo.CapacidadeDeTanque,
+            ConsumaPorKM = veiculo.ConsumaPorKM,
+            CapacidadeCarga = caminhão.CapacidadeCarga
         }
+    };
+}
+
         public Caminhao BuscarPorId(int id)
         {
             return _icaminhãorepositor.BuscarPorId(id);

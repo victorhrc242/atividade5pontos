@@ -24,6 +24,11 @@ namespace api.Controllers
         {
             return _icarroservice.Listar();
         }
+        [HttpGet("listar-carroporid")]
+        public List<Carro> listarcarroporid(int id)
+        {
+            return _icarroservice.BuscarPorVeiculoId(id);
+        }
         [HttpDelete("deletarusuario")]
         public void excluir(int id)
         {

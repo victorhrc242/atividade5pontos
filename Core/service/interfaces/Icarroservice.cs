@@ -1,4 +1,5 @@
-﻿using Core.Repositorio.Interfaces;
+﻿using Core.Repositorio;
+using Core.Repositorio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Core.service.interfaces
 
         public List<Carro> Listar();
 
+        public List<Carro> BuscarPorVeiculoId(int id);
 
         public Carro BuscarPorId(int id);
 
